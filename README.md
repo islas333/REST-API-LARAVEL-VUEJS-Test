@@ -118,13 +118,13 @@ IMPORTANTE: Este proceso puede llevar un rato, ya que son 10Mil registros
 
 
 #### Ya para terminar
-// Toda la logica esta en un solo archivo VUE
+##### Toda la logica esta en un solo archivo VUE
     resources/js/components/ExampleComponent.vue
 
-// La vista contenedor esta en:
+##### La vista contenedor esta en:
     resources/views/tabla.blade.php
 
-// Los servicio REST esta disponible en 
+##### Los servicio REST esta disponible en 
     app/Http/Controllers/PersonaController.php
     app/Http/Controllers/EstadoController.php
 

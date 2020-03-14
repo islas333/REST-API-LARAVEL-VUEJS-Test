@@ -1,0 +1,64 @@
+app/Http/Controllers/Caracteristicas para levantar el amb
+
+// Caracteristicas para levantar el ambiente laravel + vue
+apache
+myslq7.2
+php7.2
+laravel 5.8.17 
+note 10.15.3
+npm 6.4.1
+bootstrap-vue
+
+// Levantar el servidor
+    php artisan Serve
+
+// Crear las tablas necesarias para alimentar el SPA
+    php artisan migrate:refresh
+
+    // Si se decea ver los archivos para la creacion de las tablas donde se realiza la asociacion de llave foranea estan en la ruta:
+        database/migrations/2020_03_12_023516_estados.php
+        database/migrations/2020_03_12_030416_personas.php
+
+        IMPORTANTE: Para realizar correctamente la foreingkey es indisplensable crear primero la tabla estados, el comando php artisan migrate:refresh ya ya realiza todo automatico
+
+// Alimentar las tablas con ayuda de seed
+    php artisan db:seed
+    IMPORTANTE : Este proceso puede llevar un rato son 10Mil registros
+
+    // Si se decea ver el archivo semilla esta en la ruta:
+        database/seeds/Estados.php
+
+// Toda la aplicacion de corre directamente el el puerto por defaul que levanta artisan serve
+    http://127.0.0.1:8000/
+
+// Toda la logina esta en un solo archivo vu 
+    resources/js/components/ExampleComponent.vue
+
+// La vista contenedor esta en:
+    resources/views/tabla.blade.php
+
+// El servicio REST esta disponible en 
+    app/Http/Controllers/PersonaController.php
+    app/Http/Controllers/EstadoController.php
+
+    se pueden observar las rutas disponibles con el comando
+    php artisan route:list
+
+|        | GET|HEAD  | /                           |                  | Illuminate\Routing\ViewController              | web        |
+|        | GET|HEAD  | api/estados                 | estados.index    | App\Http\Controllers\EstadoController@index    | api        |
+|        | POST      | api/estados                 | estados.store    | App\Http\Controllers\EstadoController@store    | api        |
+|        | GET|HEAD  | api/estados/create          | estados.create   | App\Http\Controllers\EstadoController@create   | api        |
+|        | GET|HEAD  | api/estados/{estado}        | estados.show     | App\Http\Controllers\EstadoController@show     | api        |
+|        | PUT|PATCH | api/estados/{estado}        | estados.update   | App\Http\Controllers\EstadoController@update   | api        |
+|        | DELETE    | api/estados/{estado}        | estados.destroy  | App\Http\Controllers\EstadoController@destroy  | api        |
+|        | GET|HEAD  | api/estados/{estado}/edit   | estados.edit     | App\Http\Controllers\EstadoController@edit     | api        |
+|        | GET|HEAD  | api/personas                | personas.index   | App\Http\Controllers\PersonaController@index   | api        |
+|        | POST      | api/personas                | personas.store   | App\Http\Controllers\PersonaController@store   | api        |
+|        | GET|HEAD  | api/personas/create         | personas.create  | App\Http\Controllers\PersonaController@create  | api        |
+|        | GET|HEAD  | api/personas/{persona}      | personas.show    | App\Http\Controllers\PersonaController@show    | api        |
+|        | PUT|PATCH | api/personas/{persona}      | personas.update  | App\Http\Controllers\PersonaController@update  | api        |
+|        | DELETE    | api/personas/{persona}      | personas.destroy | App\Http\Controllers\PersonaController@destroy | api        |
+|        | GET|HEAD  | api/personas/{persona}/edit | personas.edit    | App\Http\Controllers\PersonaController@edit    | api        |
+
+// Ajuste en la clase Model para considerar capital letter ya que las tablas se crearon con mayuscula al principio
+    vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php

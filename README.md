@@ -116,10 +116,7 @@ El archivo que contiene las semillas para llenar las tablas:
 ```
 IMPORTANTE: Este proceso puede llevar un rato, ya que son 10Mil registros
 
-(optional) Third:
-```sh
-$ karma test
-```
+
 #### Ya para terminar
 // Toda la logica esta en un solo archivo VUE
     resources/js/components/ExampleComponent.vue
